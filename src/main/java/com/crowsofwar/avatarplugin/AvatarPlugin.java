@@ -1,5 +1,6 @@
 package com.crowsofwar.avatarplugin;
 
+import com.crowsofwar.gorecore.util.AccountUUIDs;
 import me.ryanhamshire.griefprevention.GriefPrevention;
 import me.ryanhamshire.griefprevention.api.GriefPreventionApi;
 import me.ryanhamshire.griefprevention.api.claim.Claim;
@@ -42,6 +43,11 @@ public class AvatarPlugin {
 			} else {
 				System.out.println("Droppepd an item in someone's claim: " + claim.getOwnerName());
 			}
+
+			net.minecraft.world.World forgeWorld = (net.minecraft.world.World) player.getWorld();
+			EntityPlayer forgePlayer = (EntityPlayer) player;
+			AvatarGriefingApi api = new AvatarGpApi();
+			System.out.println("Player can modify: " + api.canModify(forgeWorld, forgePlayer.getPosition(), AccountUUIDs.getId(forgePlayer.getName()).getUUID()));
 
 		}
 
