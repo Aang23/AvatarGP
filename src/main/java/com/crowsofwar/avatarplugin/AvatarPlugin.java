@@ -44,21 +44,20 @@ public class AvatarPlugin {
 
 			net.minecraft.world.World forgeWorld = (net.minecraft.world.World) player.getWorld();
 			EntityPlayer forgePlayer = (EntityPlayer) player;
-			AvatarGriefingApi api = new AvatarGriefApiGriefPrevention();
+
+			AvatarGriefingApi api = AvatarGriefing.getApi();
 			UUID playerIdForge = AccountUUIDs.getId(forgePlayer.getName()).getUUID();
 			UUID playerId = ((Player) player).getUniqueId();
-			System.out.println("Player can modify: " + api.canModify(forgeWorld, forgePlayer.getPosition(), playerIdForge));
+			System.out.println("Player can modify: " + api.canModify(forgeWorld, forgePlayer.getPosition(), forgePlayer));
 
 			System.out.println("The player's id: " + player.getCreator().orElse(null));
 			System.out.println("the player's sponge id:"  + ((Player) player).getUniqueId());
 
 			System.out.println("the player's entity id:" + forgePlayer.getUniqueID());
 
-		}
+			System.out.println(api);
 
-		net.minecraft.world.World forgeWorld = null;
-//		AvatarGriefingApi api = null;
-//		api.canModify(forgeWorld, BlockPos.ORIGIN);
+		}
 
 	}
 
