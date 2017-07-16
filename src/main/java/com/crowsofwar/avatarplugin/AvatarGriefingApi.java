@@ -1,5 +1,6 @@
 package com.crowsofwar.avatarplugin;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -12,6 +13,6 @@ import java.util.UUID;
  */
 public interface AvatarGriefingApi {
 
-	boolean canModify(World world, BlockPos pos, UUID playerId);
+	boolean canModify(World world, BlockPos pos, EntityPlayer player);
 
 }

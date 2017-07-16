@@ -6,15 +6,12 @@ import me.ryanhamshire.griefprevention.api.GriefPreventionApi;
 import me.ryanhamshire.griefprevention.api.claim.Claim;
 import me.ryanhamshire.griefprevention.api.claim.ClaimManager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GamePostInitializationEvent;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
 import org.spongepowered.api.plugin.Plugin;
-import org.spongepowered.api.world.Location;
-import org.spongepowered.api.world.World;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -47,7 +44,7 @@ public class AvatarPlugin {
 
 			net.minecraft.world.World forgeWorld = (net.minecraft.world.World) player.getWorld();
 			EntityPlayer forgePlayer = (EntityPlayer) player;
-			AvatarGriefingApi api = new AvatarGpApi();
+			AvatarGriefingApi api = new AvatarGriefApiGriefPrevention();
 			UUID playerIdForge = AccountUUIDs.getId(forgePlayer.getName()).getUUID();
 			UUID playerId = ((Player) player).getUniqueId();
 			System.out.println("Player can modify: " + api.canModify(forgeWorld, forgePlayer.getPosition(), playerIdForge));
