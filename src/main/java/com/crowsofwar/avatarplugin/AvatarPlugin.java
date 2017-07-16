@@ -17,6 +17,7 @@ import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Plugin(id = "avatarplugin", name = "AvatarMod2 GriefPrevention Integration Plugin", version = "1.0")
 public class AvatarPlugin {
@@ -47,7 +48,14 @@ public class AvatarPlugin {
 			net.minecraft.world.World forgeWorld = (net.minecraft.world.World) player.getWorld();
 			EntityPlayer forgePlayer = (EntityPlayer) player;
 			AvatarGriefingApi api = new AvatarGpApi();
-			System.out.println("Player can modify: " + api.canModify(forgeWorld, forgePlayer.getPosition(), AccountUUIDs.getId(forgePlayer.getName()).getUUID()));
+			UUID playerIdForge = AccountUUIDs.getId(forgePlayer.getName()).getUUID();
+			UUID playerId = ((Player) player).getUniqueId();
+			System.out.println("Player can modify: " + api.canModify(forgeWorld, forgePlayer.getPosition(), playerIdForge));
+
+			System.out.println("The player's id: " + player.getCreator().orElse(null));
+			System.out.println("the player's sponge id:"  + ((Player) player).getUniqueId());
+
+			System.out.println("the player's entity id:" + forgePlayer.getUniqueID());
 
 		}
 
