@@ -5,6 +5,7 @@ import me.ryanhamshire.griefprevention.api.GriefPreventionApi;
 import me.ryanhamshire.griefprevention.api.claim.Claim;
 import me.ryanhamshire.griefprevention.api.claim.ClaimManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -35,6 +36,7 @@ public class AvatarPlugin {
 			Claim claim = claimManager.getClaimAt(player.getLocation(), false);
 			Claim wilderness = claimManager.getWildernessClaim();
 
+			System.out.println("World: " + player.getWorld().getClass().getName());
 			if (claim == wilderness) {
 				System.out.println("Dropped an item in the wilderness");
 			} else {
@@ -42,6 +44,11 @@ public class AvatarPlugin {
 			}
 
 		}
+
+		net.minecraft.world.World forgeWorld = null;
+//		AvatarGriefingApi api = null;
+//		api.canModify(forgeWorld, BlockPos.ORIGIN);
+
 	}
 
 	public static GriefPreventionApi getGpApi() {
