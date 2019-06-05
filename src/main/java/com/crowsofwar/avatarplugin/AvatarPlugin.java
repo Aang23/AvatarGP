@@ -36,11 +36,11 @@ public class AvatarPlugin {
 			Claim claim = claimManager.getClaimAt(player.getLocation());
 			Claim wilderness = claimManager.getWildernessClaim();
 
-			System.out.println("World: " + player.getWorld().getClass().getName());
+			//System.out.println("World: " + player.getWorld().getClass().getName());
 			if (claim == wilderness) {
-				System.out.println("Dropped an item in the wilderness");
+				//System.out.println("Dropped an item in the wilderness");
 			} else {
-				System.out.println("Droppepd an item in someone's claim: " + claim.getOwnerName());
+				//System.out.println("Droppepd an item in someone's claim: " + claim.getOwnerName());
 			}
 
 			net.minecraft.world.World forgeWorld = (net.minecraft.world.World) player.getWorld();
@@ -50,18 +50,18 @@ public class AvatarPlugin {
 			UUID playerIdForge = AccountUUIDs.getId(forgePlayer.getName()).randomUUID();
 			UUID playerId = ((Player) player).getUniqueId();
 			boolean canModify = api.canModify(forgeWorld, forgePlayer.getPosition(), forgePlayer);
-			System.out.println("Player can modify: " + canModify);
+			//System.out.println("Player can modify: " + canModify);
 
-			System.out.println("The player's id: " + player.getCreator().orElse(null));
-			System.out.println("the player's sponge id:"  + ((Player) player).getUniqueId());
+			//System.out.println("The player's id: " + player.getCreator().orElse(null));
+			//System.out.println("the player's sponge id:"  + ((Player) player).getUniqueId());
 
-			System.out.println("the player's entity id:" + forgePlayer.getUniqueID());
+			//System.out.println("the player's entity id:" + forgePlayer.getUniqueID());
 
-			System.out.println(api);
+			//System.out.println(api);
 
 			if (!canModify) {
 				e.setCancelled(true);
-				System.out.println("Cancelled");
+				//System.out.println("Cancelled");
 			}
 
 		}
