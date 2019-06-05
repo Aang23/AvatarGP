@@ -42,7 +42,7 @@ repositories {
 
 dependencies {
     compile 'org.spongepowered:spongeapi:7.1.0'
-    compile files('libs/griefprevention.jar')
+    compile files('libs/griefprevention-api.jar')
     compile files('libs/av2.jar')
 }
 
