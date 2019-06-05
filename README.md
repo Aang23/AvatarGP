@@ -1,0 +1,1 @@
+Sponge plugin for AvatarMod which allows GriefPrevention integration 

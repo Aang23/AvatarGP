@@ -22,7 +22,7 @@ public class AvatarGriefApiGriefPrevention implements AvatarGriefingApi {
 
 		ClaimManager claimManager = gApi.getClaimManager(spongeWorld);
 		Location<org.spongepowered.api.world.World> location = new Location<org.spongepowered.api.world.World>(spongeWorld, pos.getX(), pos.getY(), pos.getZ());
-		Claim claim = claimManager.getClaimAt(location, false);
+		Claim claim = claimManager.getClaimAt(location);
 
 		return claim.isTrusted(player.getUniqueID()); // sponge uses entity Id
 

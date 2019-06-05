@@ -16,7 +16,7 @@ import org.spongepowered.api.plugin.Plugin;
 import java.util.Optional;
 import java.util.UUID;
 
-@Plugin(id = "avatarplugin", name = "AvatarMod2 GriefPrevention Integration Plugin", version = "1.0")
+@Plugin(id = "avatargp", name = "AvatarMod2 GriefPrevention Integration Plugin", version = "1.0")
 public class AvatarPlugin {
 
 	private static GriefPreventionApi gpApi;
@@ -32,7 +32,7 @@ public class AvatarPlugin {
 		if (playerOptional.isPresent()) {
 			Entity player = playerOptional.get();
 			ClaimManager claimManager = gpApi.getClaimManager(player.getWorld());
-			Claim claim = claimManager.getClaimAt(player.getLocation(), false);
+			Claim claim = claimManager.getClaimAt(player.getLocation());
 			Claim wilderness = claimManager.getWildernessClaim();
 
 			System.out.println("World: " + player.getWorld().getClass().getName());
@@ -46,7 +46,7 @@ public class AvatarPlugin {
 			EntityPlayer forgePlayer = (EntityPlayer) player;
 
 			AvatarGriefingApi api = AvatarGriefing.getApi();
-			UUID playerIdForge = AccountUUIDs.getId(forgePlayer.getName()).getUUID();
+			UUID playerIdForge = AccountUUIDs.getId(forgePlayer.getName()).randomUUID();
 			UUID playerId = ((Player) player).getUniqueId();
 			boolean canModify = api.canModify(forgeWorld, forgePlayer.getPosition(), forgePlayer);
 			System.out.println("Player can modify: " + canModify);
