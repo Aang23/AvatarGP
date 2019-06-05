@@ -11,12 +11,13 @@ import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.game.state.GamePostInitializationEvent;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
+import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
 
 import java.util.Optional;
 import java.util.UUID;
 
-@Plugin(id = "avatargp", name = "AvatarMod2 GriefPrevention Integration Plugin", version = "1.0")
+@Plugin(id = "avatargp", name = "AvatarMod2 GriefPrevention Integration Plugin", version = "1.0", dependencies = {@Dependency(id = "griefprevention", optional = false)})
 public class AvatarPlugin {
 
 	private static GriefPreventionApi gpApi;
