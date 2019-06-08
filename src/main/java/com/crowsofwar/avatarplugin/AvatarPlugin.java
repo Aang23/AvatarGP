@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
+import org.spongepowered.api.event.game.state.GameAboutToStartServerEvent;
 import org.spongepowered.api.event.game.state.GamePostInitializationEvent;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
 import org.spongepowered.api.plugin.Dependency;
@@ -30,6 +31,10 @@ public class AvatarPlugin {
 	@Listener
 	public void onPostInit(GamePostInitializationEvent e) {
 		gpApi = GriefPrevention.getApi();
+	}
+
+	@Listener
+	public void onGameStart(GameAboutToStartServerEvent e){
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
