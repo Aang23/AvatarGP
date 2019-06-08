@@ -22,7 +22,7 @@ import com.crowsofwar.avatar.common.event.BendingEvent;
 import java.util.Optional;
 import java.util.UUID;
 
-@Plugin(id = "avatargp", name = "AvatarMod2 GriefPrevention Integration Plugin", version = "1.0", dependencies = {@Dependency(id = "griefprevention", optional = false)})
+@Plugin(id = "avatargp", name = "AvatarMod2 GriefPrevention Integration Plugin", version = "1.0", dependencies = {@Dependency(id = "griefprevention", optional = false),@Dependency(id = "avatarmod", optional = false)})
 public class AvatarPlugin {
 
 	private static GriefPreventionApi gpApi;
