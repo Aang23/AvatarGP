@@ -5,7 +5,11 @@ import me.ryanhamshire.griefprevention.GriefPrevention;
 import me.ryanhamshire.griefprevention.api.GriefPreventionApi;
 import me.ryanhamshire.griefprevention.api.claim.Claim;
 import me.ryanhamshire.griefprevention.api.claim.ClaimManager;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
@@ -13,6 +17,7 @@ import org.spongepowered.api.event.game.state.GamePostInitializationEvent;
 import org.spongepowered.api.event.item.inventory.DropItemEvent;
 import org.spongepowered.api.plugin.Dependency;
 import org.spongepowered.api.plugin.Plugin;
+import com.crowsofwar.avatar.common.event.BendingEvent;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -25,13 +30,14 @@ public class AvatarPlugin {
 	@Listener
 	public void onPostInit(GamePostInitializationEvent e) {
 		gpApi = GriefPrevention.getApi();
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
-	@Listener
-	public void onDropItem(DropItemEvent e) {
-		Optional<Entity> playerOptional = e.getCause().first(Entity.class);
-		if (playerOptional.isPresent()) {
-			Entity player = playerOptional.get();
+	@SubscribeEvent
+	public void onBending(BendingEvent e) {
+		EntityLivingBase playerOptional = (EntityLivingBase) e.getEntity();
+		if (playerOptional instanceof EntityPlayer) {
+			Entity player = (Entity) playerOptional;
 			ClaimManager claimManager = gpApi.getClaimManager(player.getWorld());
 			Claim claim = claimManager.getClaimAt(player.getLocation());
 			Claim wilderness = claimManager.getWildernessClaim();
@@ -60,7 +66,7 @@ public class AvatarPlugin {
 			//System.out.println(api);
 
 			if (!canModify) {
-				e.setCancelled(true);
+				e.setCanceled(true);
 				//System.out.println("Cancelled");
 			}
 
