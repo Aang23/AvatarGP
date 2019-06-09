@@ -61,7 +61,7 @@ public class AvatarPlugin {
 			AvatarGriefingApi api = AvatarGriefing.getApi();
 			UUID playerIdForge = AccountUUIDs.getId(forgePlayer.getName()).randomUUID();
 			UUID playerId = ((Player) player).getUniqueId();
-			boolean canModify = api.canModify(forgeWorld, forgePlayer.getPosition(), forgePlayer);
+			boolean canModify = ((Player)forgePlayer).hasPermission("avatargp.bend");//api.canModify(forgeWorld, forgePlayer.getPosition(), forgePlayer);
 			//System.out.println("Player can modify: " + canModify);
 
 			//System.out.println("The player's id: " + player.getCreator().orElse(null));
@@ -71,7 +71,6 @@ public class AvatarPlugin {
 
 			//System.out.println(api);
 
-			System.out.println(((Player)forgePlayer).hasPermission("avatargp.bend"));
 			if (!canModify) {
 				e.setCanceled(true);
 				//System.out.println("Cancelled");
