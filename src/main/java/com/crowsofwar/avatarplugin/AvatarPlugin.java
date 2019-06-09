@@ -4,6 +4,7 @@ import com.crowsofwar.gorecore.util.AccountUUIDs;
 import me.ryanhamshire.griefprevention.GriefPrevention;
 import me.ryanhamshire.griefprevention.api.GriefPreventionApi;
 import me.ryanhamshire.griefprevention.api.claim.Claim;
+import me.ryanhamshire.griefprevention.api.claim.ClaimFlag;
 import me.ryanhamshire.griefprevention.api.claim.ClaimManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -70,6 +71,7 @@ public class AvatarPlugin {
 
 			//System.out.println(api);
 
+			System.out.println(((Player)forgePlayer).hasPermission("avatargp.bend"));
 			if (!canModify) {
 				e.setCanceled(true);
 				//System.out.println("Cancelled");

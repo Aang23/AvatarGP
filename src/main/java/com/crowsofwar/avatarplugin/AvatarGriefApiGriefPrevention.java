@@ -4,10 +4,13 @@ package com.crowsofwar.avatarplugin;
 import me.ryanhamshire.griefprevention.GriefPrevention;
 import me.ryanhamshire.griefprevention.api.GriefPreventionApi;
 import me.ryanhamshire.griefprevention.api.claim.Claim;
+import me.ryanhamshire.griefprevention.api.claim.ClaimFlag;
 import me.ryanhamshire.griefprevention.api.claim.ClaimManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import org.spongepowered.api.service.permission.Subject;
 import org.spongepowered.api.world.Location;
 
 import java.util.UUID;
@@ -25,6 +28,5 @@ public class AvatarGriefApiGriefPrevention implements AvatarGriefingApi {
 		Claim claim = claimManager.getClaimAt(location);
 
 		return claim.isTrusted(player.getUniqueID()); // sponge uses entity Id
-
 	}
 }
